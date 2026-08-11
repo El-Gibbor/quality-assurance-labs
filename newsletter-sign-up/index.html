@@ -40,13 +40,22 @@
              browser's native error bubbles don't fight with it -->
         <form class="signup-form" novalidate>
           <div class="signup-form__field">
-            <label for="email" class="signup-form__label">Email address</label>
+            <div class="signup-form__field-header">
+              <label for="email" class="signup-form__label">Email address</label>
+              <span
+                id="email-error"
+                class="signup-form__error"
+                aria-live="polite"
+              ></span>
+            </div>
             <input
               type="email"
               id="email"
               name="email"
               class="signup-form__input"
               placeholder="email@company.com"
+              aria-describedby="email-error"
+              aria-invalid="false"
               required
             />
           </div>

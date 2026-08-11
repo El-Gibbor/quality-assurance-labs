@@ -132,9 +132,22 @@ body {
   gap: 8px;
 }
 
+.signup-form__field-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .signup-form__label {
   font-size: 12px;
   font-weight: 700;
+}
+
+.signup-form__error {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--clr-tomato);
 }
 
 .signup-form__input {
@@ -144,7 +157,7 @@ body {
   border: 1px solid rgba(25, 24, 43, 0.25);
   border-radius: 8px;
   color: var(--clr-dark-slate-grey);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .signup-form__input::placeholder {
@@ -154,6 +167,14 @@ body {
 .signup-form__input:focus {
   outline: none;
   border-color: var(--clr-dark-slate-grey);
+}
+
+/* Placed after :focus, and matched on both classes, so an invalid field
+   keeps its red border even while the user is actively focused on it */
+.signup-form__input.signup-form__input--invalid {
+  background-color: rgba(255, 97, 85, 0.15);
+  border-color: var(--clr-tomato);
+  color: var(--clr-tomato);
 }
 
 .signup-form__submit {
