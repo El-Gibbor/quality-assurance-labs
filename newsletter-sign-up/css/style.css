@@ -79,6 +79,10 @@ body {
   width: 376px;
 }
 
+.card__art {
+  flex-shrink: 0;
+}
+
 .card__title {
   font-size: 56px;
   font-weight: 700;
