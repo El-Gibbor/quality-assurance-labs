@@ -83,8 +83,8 @@ body {
   width: 376px;
 }
 
-/* Sized on picture, not img: picture is the actual flex item here */
-.card__art {
+/* block here would override the browser's [hidden] rule */
+.card__art:not([hidden]) {
   display: block;
   flex-shrink: 0;
   width: 400px;
@@ -132,9 +132,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* Overrides card__description's margin-bottom: the success card's own
-   vertical rhythm (40/24/40) matches card__title's already, but not
-   card__description's 24px */
+/* Overrides card__description's margin-bottom */
 .success-view__description {
   margin-bottom: 40px;
 }
@@ -262,9 +260,7 @@ body {
     padding: 64px 24px 24px;
   }
 
-  /* Bleeds full-width above the text; order: -1 moves it first visually
-     without reordering the underlying HTML */
-  .card__art {
+  .card__art:not([hidden]) {
     order: -1;
     width: 100%;
     height: auto;
