@@ -144,10 +144,16 @@ body {
   border: 1px solid rgba(25, 24, 43, 0.25);
   border-radius: 8px;
   color: var(--clr-dark-slate-grey);
+  transition: border-color 0.2s ease;
 }
 
 .signup-form__input::placeholder {
   color: var(--clr-grey);
+}
+
+.signup-form__input:focus {
+  outline: none;
+  border-color: var(--clr-dark-slate-grey);
 }
 
 .signup-form__submit {
@@ -157,5 +163,13 @@ body {
   background-color: var(--clr-dark-slate-grey);
   color: var(--clr-white);
   font-weight: 700;
+  transition: box-shadow 0.2s ease;
+}
+
+.signup-form__submit:hover,
+.signup-form__submit:focus-visible {
+  outline: none;
+  background: linear-gradient(184deg, #ff6a3a 0%, #ff527b 100%);
+  box-shadow: 0 16px 32px rgba(255, 97, 85, 0.5);
 }
 
