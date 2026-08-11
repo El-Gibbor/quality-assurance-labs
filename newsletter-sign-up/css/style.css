@@ -29,8 +29,12 @@ img {
   max-width: 100%;
 }
 
-button {
+button,
+input {
   font: inherit;
+}
+
+button {
   cursor: pointer;
   border: none;
   background: none;
@@ -112,5 +116,46 @@ body {
 
 .benefits__icon {
   flex-shrink: 0;
+}
+
+/* --- Sign-up form --- */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.signup-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signup-form__label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.signup-form__input {
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+  border: 1px solid rgba(25, 24, 43, 0.25);
+  border-radius: 8px;
+  color: var(--clr-dark-slate-grey);
+}
+
+.signup-form__input::placeholder {
+  color: var(--clr-grey);
+}
+
+.signup-form__submit {
+  width: 100%;
+  height: 56px;
+  border-radius: 8px;
+  background-color: var(--clr-dark-slate-grey);
+  color: var(--clr-white);
+  font-weight: 700;
 }
 

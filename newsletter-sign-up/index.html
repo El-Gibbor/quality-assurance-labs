@@ -35,6 +35,25 @@
             <span>And much more!</span>
           </li>
         </ul>
+
+        <!-- novalidate: validation feedback is handled in JS so the
+             browser's native error bubbles don't fight with it -->
+        <form class="signup-form" novalidate>
+          <div class="signup-form__field">
+            <label for="email" class="signup-form__label">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="signup-form__input"
+              placeholder="email@company.com"
+              required
+            />
+          </div>
+          <button type="submit" class="signup-form__submit">
+            Subscribe to monthly newsletter
+          </button>
+        </form>
       </div>
       <img
         class="card__art"
