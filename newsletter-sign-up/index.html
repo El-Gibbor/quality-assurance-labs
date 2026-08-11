@@ -16,7 +16,7 @@
   </head>
   <body>
     <main class="card">
-      <div class="card__content">
+      <div class="card__content" id="signup-view">
         <h1 class="card__title">Stay updated!</h1>
         <p class="card__description">
           Join 60,000+ product managers receiving monthly updates on:
@@ -71,6 +71,25 @@
         width="400"
         height="593"
       />
+
+      <div class="success-view" id="success-view" tabindex="-1" hidden>
+        <img
+          class="success-view__icon"
+          src="./assets/images/icon-success.svg"
+          alt=""
+          width="64"
+          height="64"
+        />
+        <h1 class="card__title success-view__title">Thanks for subscribing!</h1>
+        <p class="card__description success-view__description">
+          A confirmation email has been sent to
+          <strong id="success-view__email"></strong>. Please open it and
+          click the button inside to confirm your subscription.
+        </p>
+        <button type="button" class="signup-form__submit" id="dismiss-success">
+          Dismiss message
+        </button>
+      </div>
     </main>
 
     <script src="./js/script.js"></script>

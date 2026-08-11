@@ -1,6 +1,12 @@
+const card = document.querySelector(".card");
+const signupView = document.getElementById("signup-view");
 const signupForm = document.querySelector(".signup-form");
 const emailInput = document.getElementById("email");
 const emailError = document.getElementById("email-error");
+const cardArt = document.querySelector(".card__art");
+const successView = document.getElementById("success-view");
+const successEmail = document.getElementById("success-view__email");
+const dismissButton = document.getElementById("dismiss-success");
 
 const EMPTY_FIELD_MESSAGE = "Email address is required";
 const INVALID_FORMAT_MESSAGE = "Valid email required";
@@ -28,6 +34,27 @@ function validateEmail() {
   return message === "";
 }
 
+function showSuccess(email) {
+  successEmail.textContent = email;
+  signupView.hidden = true;
+  cardArt.hidden = true;
+  successView.hidden = false;
+  card.classList.add("card--success");
+  // Moves the screen reader's focus onto the new view so its heading gets
+  // announced, since the swap happens without a page navigation.
+  successView.focus();
+}
+
+function showSignupForm() {
+  successView.hidden = true;
+  signupView.hidden = false;
+  cardArt.hidden = false;
+  card.classList.remove("card--success");
+  signupForm.reset();
+  showValidationState("");
+  emailInput.focus();
+}
+
 // Errors start showing only after a blur or submit, then stay live on
 // every keystroke after that.
 let hasAttemptedSubmission = false;
@@ -49,6 +76,8 @@ signupForm.addEventListener("submit", (event) => {
 
   const isValid = validateEmail();
   if (isValid) {
-    // TODO: show the success message with the submitted email.
+    showSuccess(emailInput.value);
   }
 });
+
+dismissButton.addEventListener("click", showSignupForm);

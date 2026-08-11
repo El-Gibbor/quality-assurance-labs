@@ -87,6 +87,17 @@ body {
   flex-shrink: 0;
 }
 
+/* Swaps the two-column sign-up layout for the smaller single-column
+   success card (504px total: 376px content and 64px padding each side) */
+.card--success {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 504px;
+  padding: 64px;
+  gap: 0;
+}
+
 .card__title {
   font-size: 56px;
   font-weight: 700;
@@ -97,6 +108,28 @@ body {
 .card__description {
   line-height: 1.5;
   margin-bottom: 24px;
+}
+
+/* --- Success view --- */
+.success-view:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+}
+
+.success-view__icon {
+  align-self: flex-start;
+  flex-shrink: 0;
+  margin-bottom: 40px;
+}
+
+/* Overrides card__title/card__description's margin-bottom: the success
+   card's own vertical rhythm (40/24/40) differs from the sign-up card's */
+.success-view__title {
+  margin-bottom: 24px;
+}
+
+.success-view__description {
+  margin-bottom: 40px;
 }
 
 /* --- Benefits list --- */
