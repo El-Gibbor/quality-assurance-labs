@@ -64,13 +64,18 @@
           </button>
         </form>
       </div>
-      <img
-        class="card__art"
-        src="./assets/images/illustration-sign-up-desktop.svg"
-        alt=""
-        width="400"
-        height="593"
-      />
+      <picture class="card__art">
+        <source
+          media="(max-width: 700px)"
+          srcset="./assets/images/illustration-sign-up-mobile.svg"
+        />
+        <img
+          src="./assets/images/illustration-sign-up-desktop.svg"
+          alt=""
+          width="400"
+          height="593"
+        />
+      </picture>
 
       <div class="success-view" id="success-view" tabindex="-1" hidden>
         <img

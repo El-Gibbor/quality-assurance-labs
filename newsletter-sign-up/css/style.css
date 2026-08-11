@@ -83,8 +83,18 @@ body {
   width: 376px;
 }
 
+/* Sized on picture, not img: picture is the actual flex item here */
 .card__art {
+  display: block;
   flex-shrink: 0;
+  width: 400px;
+  height: 593px;
+}
+
+.card__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Swaps the two-column sign-up layout for the smaller single-column
@@ -102,7 +112,7 @@ body {
   font-size: 56px;
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .card__description {
@@ -122,12 +132,9 @@ body {
   margin-bottom: 40px;
 }
 
-/* Overrides card__title/card__description's margin-bottom: the success
-   card's own vertical rhythm (40/24/40) differs from the sign-up card's */
-.success-view__title {
-  margin-bottom: 24px;
-}
-
+/* Overrides card__description's margin-bottom: the success card's own
+   vertical rhythm (40/24/40) matches card__title's already, but not
+   card__description's 24px */
 .success-view__description {
   margin-bottom: 40px;
 }
@@ -225,5 +232,46 @@ body {
   outline: none;
   background: linear-gradient(184deg, #ff6a3a 0%, #ff527b 100%);
   box-shadow: 0 16px 32px rgba(255, 97, 85, 0.5);
+}
+
+/* --- Responsive: mobile layout --- */
+@media (max-width: 700px) {
+  body {
+    background-color: var(--clr-white);
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .card,
+  .card--success {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .card__content {
+    width: 100%;
+    padding: 0 24px 24px;
+  }
+
+  .success-view {
+    padding: 64px 24px 24px;
+  }
+
+  /* Bleeds full-width above the text; order: -1 moves it first visually
+     without reordering the underlying HTML */
+  .card__art {
+    order: -1;
+    width: 100%;
+    height: auto;
+  }
+
+  .card__title {
+    font-size: 40px;
+  }
 }
 
