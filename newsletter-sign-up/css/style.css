@@ -58,5 +58,55 @@ body {
   color: var(--clr-dark-slate-grey);
   background-color: var(--clr-charcoal-grey);
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* --- Card shell --- */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding: 24px 24px 24px 64px;
+  background-color: var(--clr-white);
+  border-radius: 36px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.25);
+}
+
+.card__content {
+  width: 376px;
+}
+
+.card__title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.card__description {
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* --- Benefits list --- */
+.benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.benefits__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  line-height: 1.5;
+}
+
+.benefits__icon {
+  flex-shrink: 0;
 }
 
