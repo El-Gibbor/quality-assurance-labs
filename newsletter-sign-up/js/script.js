@@ -9,14 +9,35 @@ const successEmail = document.getElementById("success-view__email");
 const dismissButton = document.getElementById("dismiss-success");
 
 const EMPTY_FIELD_MESSAGE = "Email address is required";
-const INVALID_FORMAT_MESSAGE = "Valid email required";
+const INVALID_FORMAT_MESSAGE = "Please enter a valid email address";
+
+// Stricter than the native input[type=email] check: rejects things like
+// "a@b", "a..b@example.com", ".a@example.com", "a@-example.com", and domains
+// with no TLD.
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}$/;
+
+const MAX_LOCAL_PART_LENGTH = 64;
+const MAX_EMAIL_LENGTH = 254;
+
+function isValidEmail(value) {
+  if (value.length > MAX_EMAIL_LENGTH) {
+    return false;
+  }
+  const [localPart] = value.split("@");
+  if (!localPart || localPart.length > MAX_LOCAL_PART_LENGTH) {
+    return false;
+  }
+  return EMAIL_REGEX.test(value);
+}
 
 // Empty and malformed values get distinct messages.
 function getValidationMessage(value) {
-  if (value.trim() === "") {
+  const trimmed = value.trim();
+  if (trimmed === "") {
     return EMPTY_FIELD_MESSAGE;
   }
-  if (!emailInput.validity.valid) {
+  if (!isValidEmail(trimmed)) {
     return INVALID_FORMAT_MESSAGE;
   }
   return "";
@@ -76,7 +97,7 @@ signupForm.addEventListener("submit", (event) => {
 
   const isValid = validateEmail();
   if (isValid) {
-    showSuccess(emailInput.value);
+    showSuccess(emailInput.value.trim());
   }
 });
 
