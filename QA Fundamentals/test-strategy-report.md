@@ -2,11 +2,11 @@
 
 ## 1. Introduction and Objectives
 
-This document defines the test strategy for a Healthcare Management System (HMS) used by hospitals and clinics. The system manages patient records, appointments, and billing, and integrates with laboratory and pharmacy modules. It is accessed by doctors, nurses, and administrative staff, supports concurrent users, connects to medical devices and external systems, and must meet healthcare data protection rules such as HIPAA.
+This document defines the **test strategy** for a Healthcare Management System (HMS) used by hospitals and clinics. The system manages patient records, appointments, and billing, and integrates with laboratory and pharmacy modules. It is accessed by doctors, nurses, and administrative staff, supports concurrent users, connects to medical devices and external systems, and must meet healthcare data protection rules such as HIPAA.
 
-The strategy follows the V-Model so that each build phase has a matching test level, and testing begins with static review of requirements rather than only after code is delivered. Because the system handles clinical data that affects patient care, correctness and data protection carry more weight than cosmetic defects.
+The strategy follows the **V-Model** so that each build phase has a matching test level, and testing begins with static review of requirements rather than only after code is delivered. Because the system handles clinical data that affects patient care, correctness and data protection carry more weight than cosmetic defects.
 
-Objectives of testing:
+**Objectives of testing:**
 
 - Confirm that each functional requirement (patient records, appointments, billing, lab orders, pharmacy dispensing) works as specified and is traceable back to a requirement.
 - Confirm that patient data stays accurate and consistent as it moves between the record, appointment, billing, lab, and pharmacy modules.
@@ -43,7 +43,7 @@ Testing moves through levels in line with the V-Model:
 4. **System testing.** Test the full application against the functional and non-functional requirements, including security, performance, and usability.
 5. **User acceptance testing (UAT).** Clinical and administrative users confirm the system supports their real workflows before release.
 
-Both functional and non-functional testing are used. Test design uses recognised techniques rather than ad-hoc cases:
+#### Both functional and non-functional testing are used. Test design uses recognised techniques rather than ad-hoc cases:
 
 - **Equivalence partitioning and boundary value analysis** for numeric and range fields, for example patient age, dosage quantity, billing amounts, and appointment dates around limits (minimum, maximum, one below and one above).
 - **Decision table testing** for rules with several conditions, for example whether a prescription can be dispensed based on stock level, prescription validity, and patient allergy flags.
@@ -103,7 +103,6 @@ A dedicated test environment is required that mirrors production configuration b
 - **Application and database servers** matching production versions and settings.
 - **Test data:** de-identified or synthetic patient, appointment, billing, lab, and pharmacy records. Real protected health information must not be copied into the test environment.
 - **Integration endpoints:** test or stub interfaces for the laboratory system, pharmacy system, and medical devices, so integration paths can be exercised without touching live external systems.
-- **Role accounts:** test accounts for doctor, nurse, and administrative roles to verify access control.
 - **Environments:** a functional test environment; a separate performance environment sized close to production so load results are meaningful; a UAT environment for clinical and administrative users.
 - **Access control on the environment itself,** since even synthetic data should sit behind the same controls being tested.
 
